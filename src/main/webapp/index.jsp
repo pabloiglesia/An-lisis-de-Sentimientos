@@ -7,7 +7,7 @@
 <title>Proyecto ASR</title>
 </head>
 <body>
-<h1>Esta es la práctica 10c de Pablo Iglesia</h1>
+<h1>¿Funcionará el despliegue continuo?</h1>
 <hr />
 <p>Opciones de la clase de ASR:</p>
 <ul>
