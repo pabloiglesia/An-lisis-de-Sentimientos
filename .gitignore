@@ -27,4 +27,3 @@
 hs_err_pid*
 /.apt_generated/
 /.apt_generated_tests/
-/target/
