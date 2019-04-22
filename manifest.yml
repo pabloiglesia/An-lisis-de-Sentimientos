@@ -1,11 +1,11 @@
 ---
 applications:
-- name: asrTomcatEjemploCloudant
+- name: asrPractricaFinal
   random-route: true
-  path: target/asrTomcatEjemploCloudant.war
+  path: target/asrPractricaFinal.war
   memory: 256M
   instances: 1
-  host: asrTomcatEjemploCloudantPIFT
+  host: asrPractricaFinal
   domain: eu-gb.mybluemix.net
   services:
   - asrPIFTCloudantNoSQL
