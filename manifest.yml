@@ -8,4 +8,4 @@ applications:
   host: asrTomcatEjemploCloudantPIFT
   domain: eu-gb.mybluemix.net
   services:
-  - asrDCBCloudantNoSQL
+  - asrPIFTCloudantNoSQL
