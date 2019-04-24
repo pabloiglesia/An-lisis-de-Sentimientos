@@ -10,7 +10,7 @@
   </parent>
 
   <groupId>net.wasdev.wlp.sample</groupId>
-  <artifactId>asrPracticaFinal</artifactId>
+  <artifactId>asrProyectoFinal</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -91,7 +91,7 @@
           <version>2.6</version>
           <configuration>
             <failOnMissingWebXml>false</failOnMissingWebXml>
-            <warName>asrPracticaFinal</warName>
+            <warName>asrProyectoFinal</warName>
           </configuration>
         </plugin>
       </plugins>

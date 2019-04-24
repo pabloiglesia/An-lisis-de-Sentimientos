@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Proyecto ASR</title>
+<title>Proyecto ASR new...</title>
 </head>
 <body>
-<h1>¿Funcionará el despliegue continuo?</h1>
+<h1>Prueba de despliegue</h1>
 <hr />
-<p>Opciones de la clase de ASR:</p>
+<p>Opciones sobre la base de datos Cloudant versión 2019:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
 <li><a href="insertar?palabra=hola">Insertar</a></li>

@@ -6,9 +6,10 @@
 	version="1.0">
 
 	<reload-interval value="3"/>
-	<context-root uri="/" />
+	<context-root uri="asrProyectoFinal" />
 	<enable-directory-browsing value="false"/>
 	<enable-file-serving value="true"/>
 	<enable-reloading value="true"/>
 	<enable-serving-servlets-by-class-name value="false" />
+
 </web-ext>

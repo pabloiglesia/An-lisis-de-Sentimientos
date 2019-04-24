@@ -1,11 +1,11 @@
 ---
 applications:
-- name: asrPractricaFinal
+- name: asrProyectoFinal
   random-route: true
-  path: target/asrPractricaFinal.war
+  path: target/asrProyectoFinal.war
   memory: 256M
   instances: 1
-  host: asrPractricaFinal
+  host: asrProyectoFinal
   domain: eu-gb.mybluemix.net
   services:
   - asrCloudantNoSQL
