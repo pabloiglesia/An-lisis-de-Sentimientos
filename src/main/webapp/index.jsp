@@ -7,7 +7,7 @@
 <title>Proyecto ASR new...</title>
 </head>
 <body>
-<h1>Prueba de despliegue</h1>
+<h1>Prueba de integración continua</h1>
 <hr />
 <p>Opciones sobre la base de datos Cloudant versión 2019:</p>
 <ul>
