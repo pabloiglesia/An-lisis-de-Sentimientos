@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.Buffer;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ibm.watson.natural_language_understanding.v1.model.EmotionResult;
+import com.ibm.watson.natural_language_understanding.v1.model.TargetedEmotionResults;
+
 import asr.proyectoFinal.dao.CloudantPalabraStore;
+import asr.proyectoFinal.dominio.EmotionAnalysis;
 import asr.proyectoFinal.dominio.Palabra;
+import asr.proyectoFinal.services.LanguageUnderstanding;
+import asr.proyectoFinal.services.Translator;
 
 /**
  * Servlet implementation class Controller
@@ -30,6 +37,7 @@ public class Controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
 		
@@ -74,7 +82,20 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		LanguageUnderstanding languageUndestanding = new LanguageUnderstanding("www.pabloiglesia.com",true);
+		String texto = languageUndestanding.getText();
+		String traduccion = Translator.translate(texto, "es", "en");
+		
+		ArrayList<String> targets = new ArrayList<String>();
+		targets.add("BBVA");
+		targets.add("finance");
+		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
+				
+		new EmotionAnalysis(lu);
+		
+		PrintWriter out = response.getWriter();
+		out.println(lu.getAnalysisResults().getCategories());
+
 	}
 
 }

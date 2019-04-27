@@ -2,6 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <repositories>
+    <repository>
+      <id>ibm</id>
+      <name>ibm-repo</name>
+      <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
+    </repository>
+  </repositories>
+
+
   <parent>
     <groupId>net.wasdev.maven.parent</groupId>
     <artifactId>java7-parent</artifactId>
@@ -40,7 +49,7 @@
     <dependency>
       <groupId>com.cloudant</groupId>
       <artifactId>cloudant-client</artifactId>
-      <version>2.7.0</version>
+      <version>2.16.0</version>
     </dependency>
 
     <dependency>
@@ -68,17 +77,36 @@
       <version>2.25.1</version>
     </dependency>
     
-		<dependency>
-			<groupId>com.cloudant</groupId>
-			<artifactId>cloudant-client</artifactId>
-			<version>2.12.0</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>javax.ws.rs</groupId>
-		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>2.1</version>
-		</dependency>
+	<dependency>
+	    <groupId>javax.ws.rs</groupId>
+	    <artifactId>javax.ws.rs-api</artifactId>
+	    <version>2.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.ibm.watson</groupId>
+		<artifactId>ibm-watson</artifactId>
+		<version>7.0.0</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>com.ibm.watson</groupId>
+	  <artifactId>natural-language-understanding</artifactId>
+	  <version>7.0.0</version>
+	</dependency>	
+
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.3.1</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.6</version>
+	</dependency>
+
 	
   </dependencies>
 
