@@ -23,6 +23,7 @@ public class Translator
 		  .source(source)
 		  .target(target)
 		  .build();
+		
 		String translationResult = service.translate(translateOptions).execute().getResult().getTranslations().get(0).getTranslationOutput();
 
 		return translationResult;

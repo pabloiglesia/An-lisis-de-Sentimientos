@@ -1,6 +1,9 @@
 package asr.proyectoFinal.dominio;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
 
 import asr.proyectoFinal.services.LanguageUnderstanding;
 
@@ -12,10 +15,12 @@ public class EmotionAnalysis {
 	// End Cloudant
 
 	private String text;
+	private List<CategoriesResult> categories;
 	private Emotion generalResults;
 	private ArrayList<EmotionTarget> targetResults;
 	
 	public EmotionAnalysis(LanguageUnderstanding analysis) {
+		this.setCategories(analysis.getAnalysisResults().getCategories());
 		this.text = analysis.getText();
 		this.setGeneralResults(analysis);
 		this.setTargetResults(analysis);
@@ -35,6 +40,14 @@ public class EmotionAnalysis {
 
 	public void set_rev(String _rev) {
 		this._rev = _rev;
+	}
+	
+	public List<CategoriesResult> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<CategoriesResult> list) {
+		this.categories = list;
 	}
 	
 	public String getText() {
@@ -74,8 +87,8 @@ public class EmotionAnalysis {
 
 	@Override
 	public String toString() {
-		return "EmotionAnalysis [text=" + text + ", generalResults=" + generalResults + ", targetResults="
-				+ targetResults + "]";
+		return "EmotionAnalysis [_id=" + _id + ", _rev=" + _rev + ", categories=" + categories
+				+ ", generalResults=" + generalResults + ", targetResults=" + targetResults + "]";
 	}
 
 }

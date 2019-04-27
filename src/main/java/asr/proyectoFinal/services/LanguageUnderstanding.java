@@ -10,6 +10,8 @@ import com.ibm.watson.natural_language_understanding.v1.model.AnalyzeOptions;
 import com.ibm.watson.natural_language_understanding.v1.model.CategoriesOptions;
 import com.ibm.watson.natural_language_understanding.v1.model.EmotionOptions;
 import com.ibm.watson.natural_language_understanding.v1.model.Features;
+import com.ibm.watson.natural_language_understanding.v1.model.KeywordsOptions;
+import com.ibm.watson.natural_language_understanding.v1.model.SentimentOptions;
 
 public class LanguageUnderstanding {
 	
@@ -20,18 +22,7 @@ public class LanguageUnderstanding {
 		
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = getAuthenticationOptions();
 		
-		EmotionOptions emotion= new EmotionOptions.Builder()
-		  .targets(targets)
-		  .build();
-
-		CategoriesOptions categories= new CategoriesOptions.Builder()
-		  .limit(3)
-		  .build();
-
-		Features features = new Features.Builder()
-		  .categories(categories)
-		  .emotion(emotion)
-		  .build();
+		Features features = getFeatures(targets);
 
 		AnalyzeOptions parameters = new AnalyzeOptions.Builder()
 		  .html(text)
@@ -47,17 +38,11 @@ public class LanguageUnderstanding {
 		this.setText(text);
 	}
 	
-	public LanguageUnderstanding(String url, boolean clean) {
+	public LanguageUnderstanding(String url, boolean clean, ArrayList<String> targets) {
 
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = getAuthenticationOptions();
 
-		CategoriesOptions categories= new CategoriesOptions.Builder()
-		  .limit(3)
-		  .build();
-
-		Features features = new Features.Builder()
-		  .categories(categories)
-		  .build();
+		Features features = getFeatures(targets);
 
 		AnalyzeOptions parameters = new AnalyzeOptions.Builder()
 		  .url(url)
@@ -84,6 +69,23 @@ public class LanguageUnderstanding {
 		naturalLanguageUnderstanding.setEndPoint("https://gateway-lon.watsonplatform.net/natural-language-understanding/api");
 		
 		return naturalLanguageUnderstanding;
+	}
+	
+	private Features getFeatures(ArrayList<String> targets) {		
+		EmotionOptions emotion= new EmotionOptions.Builder()
+		  .targets(targets)
+		  .build();
+
+		CategoriesOptions categories= new CategoriesOptions.Builder()
+		  .limit(3)
+		  .build();
+
+		Features features = new Features.Builder()
+		  .categories(categories)
+		  .emotion(emotion)
+		  .build();
+				
+		return features;
 	}
 	
 	// GETTERS AND SETTERS
