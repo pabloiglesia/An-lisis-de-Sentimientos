@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ibm.watson.natural_language_understanding.v1.model.EmotionResult;
 import com.ibm.watson.natural_language_understanding.v1.model.TargetedEmotionResults;
 
-import asr.proyectoFinal.dao.CloudantPalabraStore;
+import asr.proyectoFinal.dao.CloudantEmotionAnalysisStore;
 import asr.proyectoFinal.dominio.EmotionAnalysis;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.LanguageUnderstanding;
@@ -41,7 +41,7 @@ public class Controller extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
 		
-		CloudantPalabraStore store = new CloudantPalabraStore();
+		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
 		System.out.println(request.getServletPath());
 		switch(request.getServletPath())
 		{
@@ -52,28 +52,28 @@ public class Controller extends HttpServlet {
 					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
 				break;
 				
-			case "/insertar":
-				Palabra palabra = new Palabra();
-				String parametro = request.getParameter("palabra");
-
-				if(parametro==null)
-				{
-					out.println("usage: /insertar?palabra=palabra_a_traducir");
-				}
-				else
-				{
-					if(store.getDB() == null) 
-					{
-						out.println(String.format("Palabra: %s", palabra));
-					}
-					else
-					{
-						palabra.setName(parametro);
-						store.persist(palabra);
-					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  
-					}
-				}
-				break;
+//			case "/insertar":
+//				Palabra palabra = new Palabra();
+//				String parametro = request.getParameter("palabra");
+//
+//				if(parametro==null)
+//				{
+//					out.println("usage: /insertar?palabra=palabra_a_traducir");
+//				}
+//				else
+//				{
+//					if(store.getDB() == null) 
+//					{
+//						out.println(String.format("Palabra: %s", palabra));
+//					}
+//					else
+//					{
+//						palabra.setName(parametro);
+//						store.persist(palabra);
+//					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  
+//					}
+//				}
+//				break;
 		}
 		out.println("</html>");
 	}
@@ -90,10 +90,26 @@ public class Controller extends HttpServlet {
 		targets.add("BBVA");
 		targets.add("finance");
 		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
-				
-		new EmotionAnalysis(lu);
 		
 		PrintWriter out = response.getWriter();
+		
+		
+		
+
+		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();		
+		EmotionAnalysis emotionAnalysis = new EmotionAnalysis(lu);
+		
+		if(store.getDB() == null) 
+		{
+			out.println("No se ha encontrado la BBDD");
+		}
+		else
+		{
+			store.persist(emotionAnalysis);
+		    out.println("Almacenado con éxito");			    	  
+		}
+		
+		
 		out.println(lu.getAnalysisResults().getCategories());
 
 	}
