@@ -32,19 +32,20 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
+        <li><a href="/asrProyectoFinal/listar"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+          <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Editar Perfil</a></li>
+            <li><a href="#">Cambiar Contraseña</a></li>
           </ul>
         </li>
+        <li><a href="#"><i class="fa fa-lock"></i> <span>Cerrar Sesión</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

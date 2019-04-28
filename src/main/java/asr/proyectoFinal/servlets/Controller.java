@@ -83,24 +83,23 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String text = request.getParameter("text");
+		String language = request.getParameter("language");
 		ArrayList<String> targets = new ArrayList<String>();
 		targets.add("BBVA");
 		targets.add("finance");
 //		LanguageUnderstanding languageUndestanding = new LanguageUnderstanding("www.pabloiglesia.com",true, targets);
 //		String texto = languageUndestanding.getText();
 //		
-		String texto = "Al departamento de Recursos Humanos de la empresa BBVA:" +
-		"Me gustaría integrarme en el Departamento Financiero de su empresa, ya que estoy capacitado y tengo las habilidades para desarrollar diferentes tareas, especialmente en las áreas de finanzas y contabilidad." +
-		"Recientemente he finalizado mis estudios en Administración y Dirección de Empresas en la Universidad de Madrid. La metodología aplicada en el centro, orientada a la acción y resultados, me ha permitido desarrollar una gran capacidad de resolución y  adquirir una perspectiva global de todas las áreas de la empresa. A lo largo de mi formación, he potenciado mi espíritu de trabajo en equipo, iniciativa e implicación en las tareas, así como mi conocimiento de idiomas, inglés y francés, mediante estancias y cursos intensivos en Inglaterra y Francia." +
-		"También he tenido oportunidad de desarrollar mis primeras experiencias laborales mediante prácticas en distintas empresas, cuyo detalle encontrará en el Currículum Vitae que adjunto." +
-		"Estoy a su entera disposición para realizar una entrevista y las pruebas que considere oportunas. No me gusta nada el jamón" +
-		"Agradeciéndole su atención, le saluda atentamente" +
-		"Pablo";
-		String traduccion = Translator.translate(texto, "es", "en");
+
+		String traduccion = Translator.translate(text, language, "en");
 		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
+		
+		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
+		store.persist(new EmotionAnalysis(lu));
 				
 		PrintWriter out = response.getWriter();
-		out.println(lu.getAnalysisResults());
+		out.println("Se ha guardado correctamente");
 	}
 
 }
