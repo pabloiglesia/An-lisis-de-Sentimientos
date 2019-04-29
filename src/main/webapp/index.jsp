@@ -11,7 +11,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">A</li>
+        <li class="active">Añadir carta</li>
       </ol>
     </section>
 
@@ -20,11 +20,11 @@
 
      	<div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
+              <h3 class="box-title">Añadir carta</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/asrProyectoFinal/insertar">
+            <form role="form" method="POST" action="/asrProyectoFinal/insert">
               <div class="box-body">
               	<div class="form-group">
                   <label>Nombre de tu empresa:</label>

@@ -32,8 +32,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
-        <li><a href="/asrProyectoFinal/listar"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
+        <li class="active"><a href="/asrProyectoFinal/"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
+        <li><a href="/asrProyectoFinal/list/"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span>
             <span class="pull-right-container">

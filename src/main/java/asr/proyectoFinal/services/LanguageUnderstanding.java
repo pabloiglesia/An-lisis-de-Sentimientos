@@ -77,7 +77,7 @@ public class LanguageUnderstanding {
 		  .build();
 
 		CategoriesOptions categories= new CategoriesOptions.Builder()
-		  .limit(3)
+		  .limit(1)
 		  .build();
 
 		Features features = new Features.Builder()

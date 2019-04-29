@@ -13,15 +13,20 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ibm.cloud.sdk.core.service.security.IamOptions;
 import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
 import com.ibm.watson.natural_language_understanding.v1.model.EmotionResult;
 import com.ibm.watson.natural_language_understanding.v1.model.TargetedEmotionResults;
+import com.ibm.watson.personality_insights.v3.PersonalityInsights;
+import com.ibm.watson.personality_insights.v3.model.Profile;
+import com.ibm.watson.personality_insights.v3.model.ProfileOptions;
 
 import asr.proyectoFinal.dao.CloudantEmotionAnalysisStore;
 import asr.proyectoFinal.dominio.EmotionAnalysis;
@@ -32,51 +37,31 @@ import asr.proyectoFinal.services.Translator;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar"})
+@WebServlet(urlPatterns = {"/list/", "/insert/"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
-		
 		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
 		System.out.println(request.getServletPath());
 		switch(request.getServletPath())
 		{
-			case "/listar":
-				if(store.getDB() == null)
-					  out.println("No hay DB");
-				else
-					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
+			case "/list/":
+				String id = request.getParameter("id");
+			if(id == null) {
+					request.getSession().setAttribute("record", store.getAll().iterator());
+					RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
+					rd.forward(request, response);
+				} else {
+					EmotionAnalysis analysis = store.get(id);
+					System.out.println(id);
+					request.getSession().setAttribute("analysis", analysis);
+					RequestDispatcher rd = request.getRequestDispatcher("/results.jsp");
+					rd.forward(request, response);
+				}
 				break;
-				
-//			case "/insertar":
-//				Palabra palabra = new Palabra();
-//				String parametro = request.getParameter("palabra");
-//
-//				if(parametro==null)
-//				{
-//					out.println("usage: /insertar?palabra=palabra_a_traducir");
-//				}
-//				else
-//				{
-//					if(store.getDB() == null) 
-//					{
-//						out.println(String.format("Palabra: %s", palabra));
-//					}
-//					else
-//					{
-//						palabra.setName(parametro);
-//						store.persist(palabra);
-//					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  
-//					}
-//				}
-//				break;
 		}
-		out.println("</html>");
 	}
 
 	/**
@@ -88,18 +73,17 @@ public class Controller extends HttpServlet {
 		ArrayList<String> targets = new ArrayList<String>();
 		targets.add("BBVA");
 		targets.add("finance");
-//		LanguageUnderstanding languageUndestanding = new LanguageUnderstanding("www.pabloiglesia.com",true, targets);
-//		String texto = languageUndestanding.getText();
-//		
+		targets.add("Marketing");
+		targets.add("University");
 
 		String traduccion = Translator.translate(text, language, "en");
 		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
 		
 		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
-		store.persist(new EmotionAnalysis(lu));
-				
-		PrintWriter out = response.getWriter();
-		out.println("Se ha guardado correctamente");
+		EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu));
+		
+		request.getSession().setAttribute("nombre_param", "valor_param");
+		response.sendRedirect("/ejemplo.jsp");
 	}
 
 }
