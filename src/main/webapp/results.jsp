@@ -60,7 +60,8 @@
             <p>
               <span class="h4">En la carta se habla de: </span>
               <% for (int i=0; i<analysis.getCategories().size(); i++) {  %>
-	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel() %></button>
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[1] %></button>
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[2] %></button>
               <% } %>
               </p>
             </div>

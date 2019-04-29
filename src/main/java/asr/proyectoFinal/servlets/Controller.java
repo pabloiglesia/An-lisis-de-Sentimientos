@@ -49,7 +49,7 @@ public class Controller extends HttpServlet {
 		{
 			case "/list/":
 				String id = request.getParameter("id");
-			if(id == null) {
+				if(id == null) {
 					request.getSession().setAttribute("record", store.getAll().iterator());
 					RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
 					rd.forward(request, response);
@@ -70,20 +70,20 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String text = request.getParameter("text");
 		String language = request.getParameter("language");
+		String[] keywords = request.getParameter("keywords").split(",");
+		
 		ArrayList<String> targets = new ArrayList<String>();
-		targets.add("BBVA");
-		targets.add("finance");
-		targets.add("Marketing");
-		targets.add("University");
-
-		String traduccion = Translator.translate(text, language, "en");
-		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
+		for (int i=0; i<keywords.length; i++)
+			targets.add(Translator.translate(keywords[i], language, "en"));
+		
+		text = Translator.translate(text, language, "en");
+		LanguageUnderstanding lu = new LanguageUnderstanding(text, targets);
 		
 		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
 		EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu));
 		
-		request.getSession().setAttribute("nombre_param", "valor_param");
-		response.sendRedirect("/ejemplo.jsp");
+		response.sendRedirect("/asrProyectoFinal/list/?id="+analysis.get_id());
+
 	}
 
 }

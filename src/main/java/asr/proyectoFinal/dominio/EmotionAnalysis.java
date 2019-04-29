@@ -19,6 +19,7 @@ public class EmotionAnalysis {
 	private Emotion generalResults;
 	private ArrayList<EmotionTarget> targetResults;
 	
+	
 	public EmotionAnalysis(LanguageUnderstanding analysis) {
 		this.setCategories(analysis.getAnalysisResults().getCategories());
 		this.text = analysis.getText();

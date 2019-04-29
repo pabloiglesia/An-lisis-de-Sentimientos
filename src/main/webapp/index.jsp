@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/asrProyectoFinal/insert">
+            <form role="form" method="POST" action="/asrProyectoFinal/insert/">
               <div class="box-body">
               	<div class="form-group">
                   <label>Nombre de tu empresa:</label>
@@ -33,14 +33,14 @@
                 
                 <div class="form-group">
                   <label>Carta de motivación</label>
-                  <textarea name="text" class="form-control" rows="3" placeholder="Escribe aquí la carta de recomendación" required></textarea>
+                  <textarea name="text" class="form-control" rows="11" placeholder="Escribe aquí la carta de recomendación" required></textarea>
                 </div>
 
 				<div class="form-group">
                   <label>¿En que idioma está la carta?</label>
                   <select name="language" class="form-control">
 					<option value="es">Español</option>
-					<option value="en">Inglés</option>
+					<option value="es">Inglés</option>
 					<option value="fr">Francés</option>
 					<option value="de">Alemán</option>
 					<option value="pt">Portugués</option>
@@ -51,7 +51,7 @@
                 
 	            <div class="form-group">
 	                <!-- /btn-group -->
-	                <input type="text" class="form-control" placeholder="Ej: Finanzas,Big Data,...">
+	                <input name="keywords" type="text" class="form-control" placeholder="Ej: Finanzas,Big Data,...">
 	              </div>
               </div>
               <!-- /.box-body -->
