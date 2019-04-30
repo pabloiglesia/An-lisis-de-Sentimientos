@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
 
 import asr.proyectoFinal.services.LanguageUnderstanding;
+import asr.proyectoFinal.services.Translator;
 
 public class EmotionAnalysis {
 	
@@ -15,6 +16,7 @@ public class EmotionAnalysis {
 	// End Cloudant
 
 	private String text;
+	private String language;
 	private List<CategoriesResult> categories;
 	private Emotion generalResults;
 	private ArrayList<EmotionTarget> targetResults;
@@ -22,7 +24,8 @@ public class EmotionAnalysis {
 	
 	public EmotionAnalysis(LanguageUnderstanding analysis) {
 		this.setCategories(analysis.getAnalysisResults().getCategories());
-		this.text = analysis.getText();
+		this.setText(analysis.getText());
+		this.setLanguage(analysis.getAnalysisResults().getLanguage());
 		this.setGeneralResults(analysis);
 		this.setTargetResults(analysis);
 	}
@@ -63,6 +66,14 @@ public class EmotionAnalysis {
 		this.text = text;
 	}
 
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
 	public Emotion getGeneralResults() {
 		return generalResults;
 	}
@@ -127,5 +138,10 @@ public class EmotionAnalysis {
 	        }
 	    }
 	    return builder.toString();
+	}
+	
+	public void translate(String language) {
+		this.setText(Translator.translate(this.getText(), this.getLanguage(), language));
+		this.setLanguage(language);	
 	}
 }
