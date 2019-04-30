@@ -10,7 +10,6 @@
     </repository>
   </repositories>
 
-
   <parent>
     <groupId>net.wasdev.maven.parent</groupId>
     <artifactId>java7-parent</artifactId>
@@ -23,8 +22,8 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Bluemix Getting Started</name>
-  <url>https://bluemix.net</url>
+  <name>bintray-plugins</name>
+  <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
 
   <licenses>
     <license>
