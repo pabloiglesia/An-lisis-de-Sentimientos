@@ -2,14 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <repositories>
-    <repository>
-      <id>ibm</id>
-      <name>ibm-repo</name>
-      <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
-    </repository>
-  </repositories>
-
   <parent>
     <groupId>net.wasdev.maven.parent</groupId>
     <artifactId>java7-parent</artifactId>
@@ -82,30 +74,6 @@
 	    <version>2.1</version>
 	</dependency>
 	
-	<dependency>
-	  <groupId>com.ibm.watson</groupId>
-	  <artifactId>language-translator</artifactId>
-	  <version>7.0.0</version>
-	</dependency>
-	
-	<dependency>
-	  <groupId>com.ibm.watson</groupId>
-	  <artifactId>natural-language-understanding</artifactId>
-	  <version>7.0.0</version>
-	</dependency>
-	
-	<dependency>
-      <groupId>com.ibm.watson</groupId>
-      <artifactId>personality-insights</artifactId>
-      <version>7.0.0</version>
-   </dependency>
-   
-   <dependency>
-    <groupId>com.ibm.watson</groupId>
-    <artifactId>tone-analyzer</artifactId>
-    <version>7.0.0</version>
-   </dependency>	
-
 	<dependency>
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>
