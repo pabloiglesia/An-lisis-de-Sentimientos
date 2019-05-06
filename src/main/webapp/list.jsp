@@ -33,7 +33,7 @@
                   <th>Alegría</th>
                   <th>Tristeza</th>
                   <th>Temor</th>
-                  <th>Asco</th>
+                  <th>Disgusto</th>
                   <th>Enfado</th>
                   <th style="width: 100px">Acción</th>
                 </tr>
@@ -49,27 +49,27 @@
 		                  <td><%= element.getCompany() %></td>
 		                  <td>
 		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-success" style="width: <%= 100*element.getGeneralResults().getJoy() %>%"></div>
+		                      <div class="progress-bar progress-bar-warning" style="width: <%= 100*element.getGeneralResults().getJoy() %>%"></div>
 		                    </div>
 		                  </td>
 		                  <td>
 		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-error" style="width: <%= 100*element.getGeneralResults().getSadness() %>%"></div>
+		                      <div class="progress-bar progress-bar-aqua" style="width: <%= 100*element.getGeneralResults().getSadness() %>%"></div>
 		                    </div>
 		                  </td>
 		                  <td>
 		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-warning" style="width: <%= 100*element.getGeneralResults().getFear() %>%"></div>
+		                      <div class="progress-bar progress-bar-brown" style="width: <%= 100*element.getGeneralResults().getFear() %>%"></div>
 		                    </div>
 		                  </td>		  
 		                  <td>
 		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-warning" style="width: <%= 100*element.getGeneralResults().getDisgust() %>%"></div>
+		                      <div class="progress-bar progress-bar-success" style="width: <%= 100*element.getGeneralResults().getDisgust() %>%"></div>
 		                    </div>
 		                  </td>		  
 		                  <td>
 		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-warning" style="width: <%= 100*element.getGeneralResults().getAnger() %>%"</div>
+		                      <div class="progress-bar progress-bar-red" style="width: <%= 100*element.getGeneralResults().getAnger() %>%"</div>
 		                    </div>
 		                  </td>		                  
 		                  <td><a class="btn btn-block btn-primary btn-sm" href="?id=<%= element.get_id() %>">Ver detalles</a></td>

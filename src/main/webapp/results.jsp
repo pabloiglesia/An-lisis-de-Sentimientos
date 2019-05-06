@@ -94,7 +94,7 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
-			              <h4>Asco:</h4>			             
+			              <h4>Disgusto:</h4>			             
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getGeneralResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
@@ -127,6 +127,10 @@
 			        
 			        <!-- Hacia la empresa -->			        
 	             	<div class="col-md-6">
+	             		<% 
+	             		boolean companyResults = true;
+	             		if(analysis.getTargetResults().get(0).getTargetName().equals(analysis.getCompany())){ 
+	             		%>
 			          <div class="box box-primary box-solid">
 			            <div class="box-header with-border">
 			              <h3 class="box-title">Emociones hacia la empresa:</h3>
@@ -167,6 +171,15 @@
 			            <!-- /.box-body -->
 			          </div>
 			          <!-- /.box -->
+			          	<% } else { 
+			          		companyResults = false;
+			          	%>
+			          		<div class="alert alert-warning alert-dismissible">
+				                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				                <h4><i class="icon fa fa-warning"></i> Lo sentimos!</h4>
+				                En la carta no se habla lo suficiente de la empresa como para realizar un análisis de sentimientos.
+				              </div>
+			          	<% } %>
 			        </div>
 				</div>
 				<!-- End Hacia la empresa -->
@@ -186,7 +199,29 @@
             <!-- /.box-header -->
              <div class="box-body">
              	<div class="row">
-             	<% for (int i=1; i<analysis.getTargetResults().size(); i++) { %>
+             	<% boolean noKeywordResults = false;
+         		int j=1; 
+             	if(companyResults){
+             		if(analysis.getTargetResults().size()<=j) {
+             			noKeywordResults = true;
+             		}
+             	} else {
+             		j=0; 
+             		if(analysis.getTargetResults().size()<=j) {
+             			noKeywordResults = true;
+             		}
+             	}
+             	%>
+             		
+             		<% if(noKeywordResults){ %>
+        				<div class="alert alert-warning alert-dismissible" style="margin:15px">
+		                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		                <h4><i class="icon fa fa-warning"></i> Lo sentimos!</h4>
+		                No hemos obtenido ningún resultado reseñable en el análisis de sentimientos de las palabras clave indicadas. Es probable que el candidato no hable de temas relacionados con estas palabras en su carta.
+		              </div>
+             		
+             	<% } %>
+             	<% for(int i=j; i<analysis.getTargetResults().size(); i++) { %>
              	<!-- PALABRA CLAVE -->
 	             <div class="col-md-6">
 			          <div class="box box-success box-solid">
@@ -201,7 +236,7 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
-			              <h4>Asco:</h4>			             
+			              <h4>Disgusto:</h4>			             
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getTargetResults().get(i).getTargetResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
