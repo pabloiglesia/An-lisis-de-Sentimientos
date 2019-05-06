@@ -6,8 +6,6 @@
 <!-- Content Wrapper. Contains page content -->
 
 	<% EmotionAnalysis analysis = (EmotionAnalysis) session.getAttribute("analysis"); %>
-
-
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -139,7 +137,7 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
-			              <h4>Asco:</h4>			             
+			              <h4>Aversión:</h4>			             
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getTargetResults().get(0).getTargetResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
@@ -172,9 +170,9 @@
 				<!-- End Hacia la empresa -->
              </div>
          </div>
-         <!-- End Emociones generales -->
+        <!-- End Emociones generales -->
          
-         <!-- Análisis de palabras clave -->
+        <!-- Análisis de palabras clave -->
      	<div class="collapsed-box box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Análisis de palabras clave</h3>
@@ -234,11 +232,93 @@
 			   	<% } %>
              </div>
          </div>
-         <!-- End Análisis de palabras clave -->
-
-    </section>
-    <!-- /.content -->
-  </div>
+         </div>
+        <!-- End Análisis de palabras clave -->
+        
+    	<!-- Analisis de personalidad -->
+	    <div class="box box-primary collapsed-box">
+	        <div class="box-header with-border">
+              <h3 class="box-title">Análisis de personalidad</h3>
+              	<div class="box-tools pull-right">
+				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				  </button>
+				</div>
+			</div>
+			<div class="box-body">
+			 <div class="row">	
+		        <div class="col-lg-3 col-xs-6">
+		          <!-- small box -->
+		          <div class="small-box bg-aqua">
+		            <div class="inner">
+		              <h3><%=analysis.getPersonalities().get(0).getRawScore() %></h3>
+		              <p>Openess</p>
+		            </div>
+		            <div class="icon">
+		              <i class="ion ion-bag"></i>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-xs-6">
+		          <!-- small box -->
+		          <div class="small-box bg-green">
+		            <div class="inner">
+		              <h3>53<sup style="font-size: 20px">%</sup></h3>
+		              <p>Conscientiousness</p>
+		            </div>
+		            <div class="icon">
+		              <i class="ion ion-stats-bars"></i>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-xs-6">
+		          <!-- small box -->
+		          <div class="small-box bg-yellow">
+		            <div class="inner">
+		              <h3>44</h3>
+		              <p>Extraversion</p>
+		            </div>
+		            <div class="icon">
+		              <i class="ion ion-person-add"></i>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-xs-6">
+		          <!-- small box -->
+		          <div class="small-box bg-red">
+		            <div class="inner">
+		              <h3>65</h3>
+		              <p>Agreeableness</p>
+		            </div>
+		            <div class="icon">
+		              <i class="ion ion-pie-graph"></i>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		      </div>
+		     </div>
+	     </div>
+	    <!-- End Análisis de palabras clave -->
+	    <!-- Analisis de tono -->
+	    <div class="box box-primary collapsed-box">
+	        <div class="box-header with-border">
+              <h3 class="box-title">Tono de la carta</h3>
+              	<div class="box-tools pull-right">
+				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				  </button>
+				</div>
+			</div>
+		</div>	
+		<!-- End Analisis de tono -->	 
+  <!-- /.content -->
+   </section>
+</div>
   <!-- /.content-wrapper -->
   <%@include file="includes/footer.jsp" %>
   <%@include file="includes/foot.jsp" %>

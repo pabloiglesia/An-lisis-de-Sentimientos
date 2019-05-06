@@ -32,6 +32,8 @@ import asr.proyectoFinal.dao.CloudantEmotionAnalysisStore;
 import asr.proyectoFinal.dominio.EmotionAnalysis;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.LanguageUnderstanding;
+import asr.proyectoFinal.services.PersonalityInsight;
+import asr.proyectoFinal.services.TonePerception;
 import asr.proyectoFinal.services.Translator;
 
 /**
@@ -45,6 +47,7 @@ public class Controller extends HttpServlet {
 	{
 		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
 		System.out.println(request.getServletPath());
+		
 		switch(request.getServletPath())
 		{
 			case "/list/":
@@ -55,12 +58,29 @@ public class Controller extends HttpServlet {
 					rd.forward(request, response);
 				} else {
 					EmotionAnalysis analysis = store.get(id);
-					System.out.println(id);
+					System.out.println("The id is: " + id);
 					request.getSession().setAttribute("analysis", analysis);
 					RequestDispatcher rd = request.getRequestDispatcher("/results.jsp");
 					rd.forward(request, response);
 				}
-				break;
+			break;
+			case "/insert/":
+				System.out.println("Entrando en insert");
+				String text = request.getParameter("text");
+				String language = request.getParameter("language");
+				String[] keywords = request.getParameter("keywords").split(",");
+
+				ArrayList<String> targets = new ArrayList<String>();
+				for (int i=0; i<keywords.length; i++)
+					targets.add(Translator.translate(keywords[i], language, "en"));
+				
+				text = Translator.translate(text, language, "en");
+				LanguageUnderstanding lu = new LanguageUnderstanding(text, targets);
+				TonePerception tp= new TonePerception(text);
+				PersonalityInsight pi = new PersonalityInsight(text);
+				EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu, pi, tp));
+			break;	
+				
 		}
 	}
 
@@ -78,12 +98,13 @@ public class Controller extends HttpServlet {
 
 		String traduccion = Translator.translate(text, language, "en");
 		LanguageUnderstanding lu = new LanguageUnderstanding(traduccion, targets);
-		
+		PersonalityInsight pi = new PersonalityInsight(traduccion);
+		TonePerception tp= new TonePerception(traduccion);
 		CloudantEmotionAnalysisStore store = new CloudantEmotionAnalysisStore();
-		EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu));
+		EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu,pi,tp));
 		
-		request.getSession().setAttribute("nombre_param", "valor_param");
-		response.sendRedirect("/ejemplo.jsp");
+		request.getSession().setAttribute("analysis", analysis);
+		response.sendRedirect("/results.jsp");
 	}
 
 }
