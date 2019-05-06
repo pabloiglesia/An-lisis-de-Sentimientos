@@ -330,12 +330,12 @@
 		        </tr>
 		        </thead>
 		        <tbody>
-		        <% for (int i=0; i<analysis.getSentenceAnalysis().size(); i++) { %>  
+		        <% for (int i=1; i<analysis.getSentenceAnalysis().size(); i++) { %>  
 		        <tr>
 		          <td><%=i%></td>
-		          <td><a<%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
-		          <td><%=analysis.getSentenceAnalysis().get(i).getToneCategories().listIterator(0)%></td>
-		          <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().listIterator(0) %></span></td>
+		          <td><a><%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
+		          <td><%=analysis.getSentenceAnalysis().get(i).getTones().toArray()%></td>
+		          <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().get(i) %></span></td>
 		        </tr>
 		        <% } %>
 		        </tbody>
