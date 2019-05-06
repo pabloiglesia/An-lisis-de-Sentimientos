@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
 import com.ibm.watson.personality_insights.v3.model.Trait;
-import com.ibm.watson.tone_analyzer.v3.model.ToneAnalysis;
+import com.ibm.watson.tone_analyzer.v3.model.DocumentAnalysis;
+import com.ibm.watson.tone_analyzer.v3.model.SentenceAnalysis;
+
 
 import asr.proyectoFinal.services.LanguageUnderstanding;
 import asr.proyectoFinal.services.PersonalityInsight;
@@ -28,7 +30,9 @@ public class EmotionAnalysis {
 	private Emotion generalResults;
 	private ArrayList<EmotionTarget> targetResults;
 	private List<Trait> personalities;
-	private ToneAnalysis toneAnalysis;
+	private List<SentenceAnalysis> sentenceAnalysis;
+	private DocumentAnalysis toneAnalysis;
+
 	
 	public EmotionAnalysis(LanguageUnderstanding analysis, PersonalityInsight personalityInsight,TonePerception tonePerception) {
 	
@@ -40,15 +44,11 @@ public class EmotionAnalysis {
 		this.setGeneralResults(analysis);
 		this.setTargetResults(analysis);
 		this.setPersonalities(personalityInsight.getProfile().getPersonality());
+		this.setToneAnalysis(tonePerception.getToneAnalysis().getDocumentTone());
+		this.setSentenceAnalysis(tonePerception.getToneAnalysis().getSentencesTone());
+
 	}
 
-	public ToneAnalysis getToneAnalysis() {
-		return toneAnalysis;
-	}
-
-	public void setToneAnalysis(ToneAnalysis toneAnalysis) {
-		this.toneAnalysis = toneAnalysis;
-	}
 
 	public String get_id() {
 		return _id;
@@ -137,7 +137,22 @@ public class EmotionAnalysis {
 		}
 	}
 	
-	
+
+	public DocumentAnalysis getToneAnalysis() {
+		return toneAnalysis;
+	}
+
+	public void setToneAnalysis(DocumentAnalysis toneAnalysis) {
+		this.toneAnalysis = toneAnalysis;
+	}
+
+	public List<SentenceAnalysis> getSentenceAnalysis() {
+		return sentenceAnalysis;
+	}
+
+	public void setSentenceAnalysis(List<SentenceAnalysis> sentenceAnalysis) {
+		this.sentenceAnalysis = sentenceAnalysis;
+	}
 
 	public List<Trait> getPersonalities() {
 		return personalities;
