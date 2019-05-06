@@ -2,11 +2,22 @@
   <header class="main-header">
 
     <!-- Logo -->
+<<<<<<< HEAD
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Admin</b>LTE</span>
+=======
+    <a href="/asrProyectoFinal/	" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-lg"> 
+		<img src="/asrProyectoFinal/dist/img/logo-letra.png" alt="Logo" class="col-lg-12 col-md-12 col-sm-12 col-xs-6" style="margin-top:5px;padding:0px;margin-bottom:20px">
+	  </span>
+	        <!-- logo for regular state and mobile devices -->
+		<img src="/asrProyectoFinal/dist/img/logo-mini.png" alt="Logo" width="100%">
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
     </a>
 
     <!-- Header Navbar -->
@@ -18,6 +29,7 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+<<<<<<< HEAD
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
@@ -114,19 +126,29 @@
               </li>
             </ul>
           </li>
+=======
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
+<<<<<<< HEAD
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+=======
+              <img src="/asrProyectoFinal/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
+<<<<<<< HEAD
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+=======
+                <img src="/asrProyectoFinal/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
 
                 <p>
                   Alexander Pierce - Web Developer

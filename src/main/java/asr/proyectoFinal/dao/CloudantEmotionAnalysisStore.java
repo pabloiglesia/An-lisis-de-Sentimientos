@@ -97,13 +97,11 @@ public class CloudantEmotionAnalysisStore
 		return db.find(EmotionAnalysis.class, id);
 	}
 
-//	public EmotionAnalysis update(String id, EmotionAnalysis newEmotionAnalysis) {
-//		EmotionAnalysis visitor = db.find(EmotionAnalysis.class, id);
-//		visitor.setName(newEmotionAnalysis.getName());
-//		db.update(visitor);
-//		return db.find(EmotionAnalysis.class, id);
-//		
-//	}
+	public EmotionAnalysis update(String id, EmotionAnalysis newEmotionAnalysis) {
+		db.update(newEmotionAnalysis);
+		return db.find(EmotionAnalysis.class, id);
+		
+	}
 
 	public void delete(String id) {
 		EmotionAnalysis visitor = db.find(EmotionAnalysis.class, id);

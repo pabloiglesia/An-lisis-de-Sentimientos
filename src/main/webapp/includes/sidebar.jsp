@@ -7,7 +7,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/asrProyectoFinal/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -30,9 +30,9 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
+        <li class="header">ACCIONES</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/asrProyectoFinal/"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
+        <li><a href="/asrProyectoFinal/"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
         <li><a href="/asrProyectoFinal/list/"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span>

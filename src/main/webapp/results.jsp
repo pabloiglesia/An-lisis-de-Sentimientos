@@ -28,7 +28,8 @@
               <div class="user-block col-md-9">
                 <span class="username">Texto de la carta</span>
               </div>
-                <form action="/translateCard">     
+                <form method="POST" action="/asrProyectoFinal/translate/"> 
+                	<input type="hidden" value="<%= analysis.get_id() %>" name="id">    
 					<div class="col-md-2">
 						<select name="language" class="btn-block form-control">
 							<option value="es">Español</option>
@@ -58,7 +59,8 @@
             <p>
               <span class="h4">En la carta se habla de: </span>
               <% for (int i=0; i<analysis.getCategories().size(); i++) {  %>
-	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel() %></button>
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[1] %></button>
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[2] %></button>
               <% } %>
               </p>
             </div>
@@ -68,7 +70,7 @@
 
 		<!-- Emociones generales -->
      	<div class="collapsed-box box box-primary">
-            <div class="box-header with-border">
+            <div class="box-header with-border" data-widget="collapse">
               <h3 class="box-title">Emociones generales</h3>
               	<div class="box-tools pull-right">
 				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -174,7 +176,7 @@
          
         <!-- Análisis de palabras clave -->
      	<div class="collapsed-box box box-success">
-            <div class="box-header with-border">
+            <div class="box-header with-border" data-widget="collapse">
               <h3 class="box-title">Análisis de palabras clave</h3>
 				<div class="box-tools pull-right">
 				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

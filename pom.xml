@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <repositories>
     <repository>
       <id>ibm</id>
@@ -9,8 +8,6 @@
       <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
     </repository>
   </repositories>
-
-
   <parent>
     <groupId>net.wasdev.maven.parent</groupId>
     <artifactId>java7-parent</artifactId>
@@ -23,8 +20,8 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Bluemix Getting Started</name>
-  <url>https://bluemix.net</url>
+  <name>bintray-plugins</name>
+  <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
 
   <licenses>
     <license>
@@ -45,6 +42,12 @@
   </dependencyManagement>
 
   <dependencies>
+  
+  	<dependency>
+	 <groupId>com.ibm.watson</groupId>
+	 <artifactId>ibm-watson</artifactId>
+	 <version>7.0.0</version>
+	</dependency>
 
     <dependency>
       <groupId>com.cloudant</groupId>
@@ -83,30 +86,6 @@
 	    <version>2.1</version>
 	</dependency>
 	
-	<dependency>
-		<groupId>com.ibm.watson</groupId>
-		<artifactId>ibm-watson</artifactId>
-		<version>7.0.0</version>
-	</dependency>
-	
-	<dependency>
-	  <groupId>com.ibm.watson</groupId>
-	  <artifactId>natural-language-understanding</artifactId>
-	  <version>7.0.0</version>
-	</dependency>
-	
-	<dependency>
-      <groupId>com.ibm.watson</groupId>
-      <artifactId>personality-insights</artifactId>
-      <version>7.0.0</version>
-   </dependency>
-   
-   <dependency>
-    <groupId>com.ibm.watson</groupId>
-    <artifactId>tone-analyzer</artifactId>
-    <version>7.0.0</version>
-   </dependency>	
-
 	<dependency>
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>

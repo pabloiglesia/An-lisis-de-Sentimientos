@@ -10,6 +10,8 @@ import com.ibm.watson.tone_analyzer.v3.model.ToneAnalysis;
 import asr.proyectoFinal.services.LanguageUnderstanding;
 import asr.proyectoFinal.services.PersonalityInsight;
 import asr.proyectoFinal.services.TonePerception;
+import asr.proyectoFinal.services.Translator;
+
 
 public class EmotionAnalysis {
 	
@@ -19,6 +21,7 @@ public class EmotionAnalysis {
 	// End Cloudant
 
 	private String text;
+	private String language;
 	private List<CategoriesResult> categories;
 	private Emotion generalResults;
 	private ArrayList<EmotionTarget> targetResults;
@@ -26,8 +29,10 @@ public class EmotionAnalysis {
 	private ToneAnalysis toneAnalysis;
 	
 	public EmotionAnalysis(LanguageUnderstanding analysis, PersonalityInsight personalityInsight,TonePerception tonePerception) {
+	
 		this.setCategories(analysis.getAnalysisResults().getCategories());
-		this.text = analysis.getText();
+		this.setText(analysis.getText());
+		this.setLanguage(analysis.getAnalysisResults().getLanguage());
 		this.setGeneralResults(analysis);
 		this.setTargetResults(analysis);
 		this.setPersonalities(personalityInsight.getProfile().getPersonality());
@@ -70,6 +75,14 @@ public class EmotionAnalysis {
 		this.text = text;
 	}
 
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
 	public Emotion getGeneralResults() {
 		return generalResults;
 	}
@@ -144,5 +157,10 @@ public class EmotionAnalysis {
 	        }
 	    }
 	    return builder.toString();
+	}
+	
+	public void translate(String language) {
+		this.setText(Translator.translate(this.getText(), this.getLanguage(), language));
+		this.setLanguage(language);	
 	}
 }

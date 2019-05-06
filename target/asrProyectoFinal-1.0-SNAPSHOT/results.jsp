@@ -6,6 +6,11 @@
 <!-- Content Wrapper. Contains page content -->
 
 	<% EmotionAnalysis analysis = (EmotionAnalysis) session.getAttribute("analysis"); %>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -28,7 +33,12 @@
               <div class="user-block col-md-9">
                 <span class="username">Texto de la carta</span>
               </div>
+<<<<<<< HEAD
                 <form action="/translateCard">     
+=======
+                <form method="POST" action="/asrProyectoFinal/translate/"> 
+                	<input type="hidden" value="<%= analysis.get_id() %>" name="id">    
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
 					<div class="col-md-2">
 						<select name="language" class="btn-block form-control">
 							<option value="es">Español</option>
@@ -58,7 +68,12 @@
             <p>
               <span class="h4">En la carta se habla de: </span>
               <% for (int i=0; i<analysis.getCategories().size(); i++) {  %>
+<<<<<<< HEAD
 	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel() %></button>
+=======
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[1] %></button>
+	              <button type="button" class="btn btn-primary"><%= analysis.getCategories().get(i).getLabel().split("/")[2] %></button>
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
               <% } %>
               </p>
             </div>
@@ -68,7 +83,11 @@
 
 		<!-- Emociones generales -->
      	<div class="collapsed-box box box-primary">
+<<<<<<< HEAD
             <div class="box-header with-border">
+=======
+            <div class="box-header with-border" data-widget="collapse">
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
               <h3 class="box-title">Emociones generales</h3>
               	<div class="box-tools pull-right">
 				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -137,7 +156,11 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
+<<<<<<< HEAD
 			              <h4>Aversión:</h4>			             
+=======
+			              <h4>Asco:</h4>			             
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getTargetResults().get(0).getTargetResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
@@ -170,11 +193,19 @@
 				<!-- End Hacia la empresa -->
              </div>
          </div>
+<<<<<<< HEAD
         <!-- End Emociones generales -->
          
         <!-- Análisis de palabras clave -->
      	<div class="collapsed-box box box-success">
             <div class="box-header with-border">
+=======
+         <!-- End Emociones generales -->
+         
+         <!-- Análisis de palabras clave -->
+     	<div class="collapsed-box box box-success">
+            <div class="box-header with-border" data-widget="collapse">
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
               <h3 class="box-title">Análisis de palabras clave</h3>
 				<div class="box-tools pull-right">
 				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -232,6 +263,7 @@
 			   	<% } %>
              </div>
          </div>
+<<<<<<< HEAD
          </div>
         <!-- End Análisis de palabras clave -->
         
@@ -319,6 +351,13 @@
   <!-- /.content -->
    </section>
 </div>
+=======
+         <!-- End Análisis de palabras clave -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+>>>>>>> a29775130d7adfe8dddd13b476fb08bfc4deae8a
   <!-- /.content-wrapper -->
   <%@include file="includes/footer.jsp" %>
   <%@include file="includes/foot.jsp" %>
