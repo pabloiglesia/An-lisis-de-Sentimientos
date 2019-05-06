@@ -252,8 +252,8 @@
 		          <!-- small box -->
 		          <div class="small-box bg-aqua">
 		            <div class="inner">
-		              <h3><%=analysis.getPersonalities().get(0).getRawScore() %></h3>
-		              <p>Openess</p>
+		              <h3><%=analysis.getPersonalities().get(0).getRawScore().floatValue() %></h3>
+		              <p><%= analysis.getPersonalities().get(0).getName() %></p>
 		            </div>
 		            <div class="icon">
 		              <i class="ion ion-bag"></i>
@@ -266,8 +266,8 @@
 		          <!-- small box -->
 		          <div class="small-box bg-green">
 		            <div class="inner">
-		              <h3>53<sup style="font-size: 20px">%</sup></h3>
-		              <p>Conscientiousness</p>
+		              <h3><%=analysis.getPersonalities().get(1).getRawScore().floatValue() %><sup style="font-size: 20px">%</sup></h3>
+		              <p><%=analysis.getPersonalities().get(1).getName() %></p>
 		            </div>
 		            <div class="icon">
 		              <i class="ion ion-stats-bars"></i>
@@ -280,8 +280,8 @@
 		          <!-- small box -->
 		          <div class="small-box bg-yellow">
 		            <div class="inner">
-		              <h3>44</h3>
-		              <p>Extraversion</p>
+		              <h3><%=analysis.getPersonalities().get(2).getRawScore().floatValue() %></h3>
+		              <p><%=analysis.getPersonalities().get(2).getName() %></p>
 		            </div>
 		            <div class="icon">
 		              <i class="ion ion-person-add"></i>
@@ -294,8 +294,8 @@
 		          <!-- small box -->
 		          <div class="small-box bg-red">
 		            <div class="inner">
-		              <h3>65</h3>
-		              <p>Agreeableness</p>
+		              <h3><%=analysis.getPersonalities().get(3).getRawScore().floatValue() %></h3>
+		              <p><%=analysis.getPersonalities().get(3).getName() %></p>
 		            </div>
 		            <div class="icon">
 		              <i class="ion ion-pie-graph"></i>
@@ -308,15 +308,43 @@
 	     </div>
 	    <!-- End Análisis de palabras clave -->
 	    <!-- Analisis de tono -->
-	    <div class="box box-primary collapsed-box">
-	        <div class="box-header with-border">
-              <h3 class="box-title">Tono de la carta</h3>
-              	<div class="box-tools pull-right">
-				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-				  </button>
-				</div>
-			</div>
-		</div>	
+		<div class="box box-info">
+		  <div class="box box-primary collapsed-box">
+		    <h3 class="box-title">Latest Orders</h3>
+		
+		    <div class="box-tools pull-right">
+		      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+		      </button>
+		    </div>
+		  </div>
+		  <!-- /.box-header -->
+		  <div class="box-body" style="">
+		    <div class="table-responsive">
+		      <table class="table no-margin">
+		        <thead>
+		        <tr>
+		          <th>ID</th>
+		          <th>Frase</th>
+		          <th>Tonos</th>
+		          <th>Puntuación</th>
+		        </tr>
+		        </thead>
+		        <tbody>
+		        <% for (int i=0; i<analysis.getSentenceAnalysis().size(); i++) { %>  
+		        <tr>
+		          <td><%=i%></td>
+		          <td><a<%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
+		          <td><%=analysis.getSentenceAnalysis().get(i).getToneCategories().listIterator(0)%></td>
+		          <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().listIterator(0) %></span></td>
+		        </tr>
+		        <% } %>
+		        </tbody>
+		      </table>
+		    </div>
+		    <!-- /.table-responsive -->
+		  </div>
+		  <!-- /.box-body -->
+		</div>
 		<!-- End Analisis de tono -->	 
   <!-- /.content -->
    </section>
