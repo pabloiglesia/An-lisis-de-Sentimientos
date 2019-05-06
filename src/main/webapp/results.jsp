@@ -266,7 +266,7 @@
 		          <!-- small box -->
 		          <div class="small-box bg-green">
 		            <div class="inner">
-		              <h3><%=analysis.getPersonalities().get(1).getRawScore().floatValue() %><sup style="font-size: 20px">%</sup></h3>
+		              <h3><%=analysis.getPersonalities().get(1).getRawScore().floatValue() %><sup style="font-size: 20px"></sup></h3>
 		              <p><%=analysis.getPersonalities().get(1).getName() %></p>
 		            </div>
 		            <div class="icon">
@@ -334,8 +334,8 @@
 		        <tr>
 		          <td><%=i%></td>
 		          <td><a><%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
-		          <td><%=analysis.getSentenceAnalysis().get(i).getTones().toArray()%></td>
-		          <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().get(i) %></span></td>
+<%--   			  <td><%=analysis.getSentenceAnalysis().get(i).getTones().toArray()%></td> -->
+<%-- 		       <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().get(i) %></span></td> --%>
 		        </tr>
 		        <% } %>
 		        </tbody>
