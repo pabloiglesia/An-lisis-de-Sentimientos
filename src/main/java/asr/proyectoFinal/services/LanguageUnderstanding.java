@@ -17,8 +17,10 @@ public class LanguageUnderstanding {
 	
 	private AnalysisResults analysisResults;
 	private String text;
+	private String company;
+	private String candidate;
 
-	public LanguageUnderstanding(String text, ArrayList<String> targets) {
+	public LanguageUnderstanding(String text, ArrayList<String> targets, String candidate) {
 		
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = getAuthenticationOptions();
 		
@@ -36,9 +38,11 @@ public class LanguageUnderstanding {
 		
 		this.setAnalysisResults(response);
 		this.setText(text);
+		this.setCompany(targets.get(0));
+		this.setCandidate(candidate);
 	}
-	
-	public LanguageUnderstanding(String url, boolean clean, ArrayList<String> targets) {
+
+	public LanguageUnderstanding(String url, boolean clean, ArrayList<String> targets, String candidate) {
 
 		NaturalLanguageUnderstanding naturalLanguageUnderstanding = getAuthenticationOptions();
 
@@ -58,6 +62,8 @@ public class LanguageUnderstanding {
 		
 		this.setAnalysisResults(analysisResponse);
 		this.setText(analysisResponse.getAnalyzedText());
+		this.setCompany(targets.get(0));
+		this.setCandidate(candidate);
 	}
 	
 	private NaturalLanguageUnderstanding getAuthenticationOptions() {
@@ -89,7 +95,22 @@ public class LanguageUnderstanding {
 	}
 	
 	// GETTERS AND SETTERS
+	public String getCandidate() {
+		return candidate;
+	}
 
+	public void setCandidate(String candidate) {
+		this.candidate = candidate;
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
 	public AnalysisResults getAnalysisResults() {
 		return analysisResults;
 	}
