@@ -63,22 +63,6 @@ public class Controller extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("/results.jsp");
 					rd.forward(request, response);
 				}
-			break;
-			case "/insert/":
-				System.out.println("Entrando en insert");
-				String text = request.getParameter("text");
-				String language = request.getParameter("language");
-				String[] keywords = request.getParameter("keywords").split(",");
-
-				ArrayList<String> targets = new ArrayList<String>();
-				for (int i=0; i<keywords.length; i++)
-					targets.add(Translator.translate(keywords[i], language, "en"));
-				
-				text = Translator.translate(text, language, "en");
-				LanguageUnderstanding lu = new LanguageUnderstanding(text, targets);
-				TonePerception tp= new TonePerception(text);
-				PersonalityInsight pi = new PersonalityInsight(text);
-				EmotionAnalysis analysis = store.persist(new EmotionAnalysis(lu, pi, tp));
 			break;	
 				
 		}
@@ -98,17 +82,19 @@ public class Controller extends HttpServlet {
 		switch(request.getServletPath())
 		{
 			case "/insert/":
-				System.out.println("Entrando en insert");
 				text = request.getParameter("text");
+				String company = request.getParameter("companyName");
 				language = request.getParameter("language");
+				String candidate = request.getParameter("candidate");
 				String[] keywords = request.getParameter("keywords").split(",");
 
 				ArrayList<String> targets = new ArrayList<String>();
+				targets.add(company);
 				for (int i=0; i<keywords.length; i++)
 					targets.add(Translator.translate(keywords[i], language, "en"));
 				
 				text = Translator.translate(text, language, "en");
-				LanguageUnderstanding lu = new LanguageUnderstanding(text, targets);
+				LanguageUnderstanding lu = new LanguageUnderstanding(text, targets, candidate);
 				PersonalityInsight pi = new PersonalityInsight(text);
 				TonePerception tp= new TonePerception(text);
 				

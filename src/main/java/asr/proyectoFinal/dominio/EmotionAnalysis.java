@@ -21,6 +21,8 @@ public class EmotionAnalysis {
 	// End Cloudant
 
 	private String text;
+	private String company;
+	private String candidate;
 	private String language;
 	private List<CategoriesResult> categories;
 	private Emotion generalResults;
@@ -32,13 +34,22 @@ public class EmotionAnalysis {
 	
 		this.setCategories(analysis.getAnalysisResults().getCategories());
 		this.setText(analysis.getText());
+		this.setCompany(analysis.getCompany());
+		this.setCandidate(analysis.getCandidate());
 		this.setLanguage(analysis.getAnalysisResults().getLanguage());
 		this.setGeneralResults(analysis);
 		this.setTargetResults(analysis);
 		this.setPersonalities(personalityInsight.getProfile().getPersonality());
-		
 	}
-	
+
+	public ToneAnalysis getToneAnalysis() {
+		return toneAnalysis;
+	}
+
+	public void setToneAnalysis(ToneAnalysis toneAnalysis) {
+		this.toneAnalysis = toneAnalysis;
+	}
+
 	public String get_id() {
 		return _id;
 	}
@@ -73,6 +84,22 @@ public class EmotionAnalysis {
 
 	public void setText(String text) {
 		this.text = text;
+	}	
+	
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
+	public String getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(String candidate) {
+		this.candidate = candidate;
 	}
 
 	public String getLanguage() {
