@@ -319,15 +319,14 @@
         <!-- End Análisis de palabras clave -->
         
 	    <!-- Analisis de tono -->
-		<div class="box box-info">
-		  <div class="box box-primary collapsed-box">
-		    <h3 class="box-title">Latest Orders</h3>
-		
-		    <div class="box-tools pull-right">
-		      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-		      </button>
-		    </div>
-		  </div>
+     	<div class="collapsed-box box box-primary">
+            <div class="box-header with-border" data-widget="collapse">
+              <h3 class="box-title">Percepción del tono</h3>
+              	<div class="box-tools pull-right">
+				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				  </button>
+				</div>
+            </div>
 		  <!-- /.box-header -->
 		  <div class="box-body" style="">
 		    <div class="table-responsive">
@@ -341,13 +340,23 @@
 		        </tr>
 		        </thead>
 		        <tbody>
-		        <% for (int i=1; i<analysis.getSentenceAnalysis().size(); i++) { %>  
+		        <% for (int i=0; i<analysis.getSentenceAnalysis().size(); i++) { %>  
 		        <tr>
-		          <td><%=i%></td>
-		          <td><a><%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
-<%--   			  <td><%=analysis.getSentenceAnalysis().get(i).getTones().toArray()%></td> -->
-<%-- 		       <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().get(i) %></span></td> --%>
-		        </tr>
+		        <td><%=i %></td>
+		        <td><a><%= analysis.getSentenceAnalysis().get(i).getText() %></a></td>
+		        <% float valorPrevio=0; 
+		          String nombreTono="Neutral";%>
+		        <% for (int m=0; m<analysis.getSentenceAnalysis().get(i).getTones().size(); m++) {
+			           Double puntuacion= analysis.getSentenceAnalysis().get(i).getTones().get(m).getScore();
+			           if(puntuacion.floatValue() > valorPrevio){
+			           	valorPrevio=puntuacion.floatValue();
+			           	nombreTono=analysis.getSentenceAnalysis().get(i).getTones().get(m).getToneName();
+		           		}
+		        	} %>
+         
+				<td><a><%= nombreTono %></a></td>
+	 			<td><span class="label label-success"><%= valorPrevio %></span></td>
+				</tr>
 		        <% } %>
 		        </tbody>
 		      </table>

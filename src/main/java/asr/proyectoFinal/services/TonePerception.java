@@ -28,7 +28,7 @@ public class TonePerception {
 				  .apiKey("mHumGjNfgNzIvf5KHMyVNobo0SqS9obmjvHL-LrXGHO4")
 				  .build();
 
-		ToneAnalyzer toneAnalyzer = new ToneAnalyzer("2016-10-19", options);
+		ToneAnalyzer toneAnalyzer = new ToneAnalyzer("2017-09-21", options);
 		toneAnalyzer.setEndPoint("https://gateway-lon.watsonplatform.net/tone-analyzer/api");
 		return toneAnalyzer;
 	}
