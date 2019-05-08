@@ -9,5 +9,7 @@ applications:
   domain: eu-gb.mybluemix.net
   services:
   - asrCloudantNoSQL
-  - Natural Language Understanding-asrPracticaFinal
+  - NaturalLanguageUnderstanding-asrPracticaFinal
   - Language Translator-asrPracticaFinal
+  - PersonalityInsights - asrPracticaFinal
+  - ToneAnalyzer-asrPracticaFinal

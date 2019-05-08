@@ -5,8 +5,8 @@ package asr.proyectoFinal.dominio;
 
 import java.util.List;
 
-import com.ibm.watson.tone_analyzer.v3.model.ToneCategory;
-import com.ibm.watson.tone_analyzer.v3.model.ToneScore;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneCategory;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneScore;
 
 /**
  * @author Pilar

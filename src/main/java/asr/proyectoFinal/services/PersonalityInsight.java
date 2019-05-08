@@ -1,11 +1,9 @@
 package asr.proyectoFinal.services;
 
-
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.personality_insights.v3.PersonalityInsights;
-import com.ibm.watson.personality_insights.v3.model.Profile;
-import com.ibm.watson.personality_insights.v3.model.ProfileOptions;
-
+import com.ibm.watson.developer_cloud.personality_insights.v3.PersonalityInsights;
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.ProfileOptions;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 public class PersonalityInsight {
 	
@@ -20,7 +18,7 @@ public class PersonalityInsight {
 				  .rawScores(true)
 				  .build();
 				
-		Profile response = personalityInsights.profile(profileOptions).execute().getResult();
+		Profile response = personalityInsights.profile(profileOptions).execute();
 		this.setProfile(response);
 		//this.setText(text);
 	}

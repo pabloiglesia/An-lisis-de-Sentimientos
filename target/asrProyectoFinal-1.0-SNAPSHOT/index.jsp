@@ -32,6 +32,11 @@
                 </div>
                 
                 <div class="form-group">
+                  <label>Nombre del candidato:</label>
+                  <input name="candidate" type="text" class="form-control" placeholder="Ej: John Doe" required>
+                </div>
+                
+                <div class="form-group">
                   <label>Carta de motivación</label>
                   <textarea name="text" class="form-control" rows="11" placeholder="Escribe aquí la carta de recomendación" required></textarea>
                 </div>

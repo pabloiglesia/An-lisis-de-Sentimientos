@@ -3,7 +3,7 @@
  */
 package asr.proyectoFinal.dominio;
 
-import com.ibm.watson.personality_insights.v3.model.Profile;
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 
 /**
  * @author Pilar

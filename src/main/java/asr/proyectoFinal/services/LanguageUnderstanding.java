@@ -3,15 +3,15 @@ package asr.proyectoFinal.services;
 import java.awt.List;
 import java.util.ArrayList;
 
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.natural_language_understanding.v1.NaturalLanguageUnderstanding;
-import com.ibm.watson.natural_language_understanding.v1.model.AnalysisResults;
-import com.ibm.watson.natural_language_understanding.v1.model.AnalyzeOptions;
-import com.ibm.watson.natural_language_understanding.v1.model.CategoriesOptions;
-import com.ibm.watson.natural_language_understanding.v1.model.EmotionOptions;
-import com.ibm.watson.natural_language_understanding.v1.model.Features;
-import com.ibm.watson.natural_language_understanding.v1.model.KeywordsOptions;
-import com.ibm.watson.natural_language_understanding.v1.model.SentimentOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalyzeOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.CategoriesOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.EmotionOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Features;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+
+
 
 public class LanguageUnderstanding {
 	
@@ -33,8 +33,7 @@ public class LanguageUnderstanding {
 
 		AnalysisResults response = naturalLanguageUnderstanding
 		  .analyze(parameters)
-		  .execute()
-		  .getResult();
+		  .execute();
 		
 		this.setAnalysisResults(response);
 		this.setText(text);
@@ -57,8 +56,7 @@ public class LanguageUnderstanding {
 
 		AnalysisResults analysisResponse = naturalLanguageUnderstanding
 		  .analyze(parameters)
-		  .execute()
-		  .getResult();
+		  .execute();
 		
 		this.setAnalysisResults(analysisResponse);
 		this.setText(analysisResponse.getAnalyzedText());
@@ -82,11 +80,10 @@ public class LanguageUnderstanding {
 		  .targets(targets)
 		  .build();
 
-		CategoriesOptions categories= new CategoriesOptions.Builder()
-		  .limit(3)
-		  .build();
-
-		Features features = new Features.Builder()
+		CategoriesOptions categories = new CategoriesOptions();
+		categories.setLimit(3);
+		
+  		Features features = new Features.Builder()
 		  .categories(categories)
 		  .emotion(emotion)
 		  .build();

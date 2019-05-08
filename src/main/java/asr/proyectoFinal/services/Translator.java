@@ -1,10 +1,8 @@
 package asr.proyectoFinal.services;
 
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.language_translator.v3.LanguageTranslator;
-import com.ibm.watson.language_translator.v3.model.TranslateOptions;
-import com.ibm.watson.language_translator.v3.model.TranslationResult;
-import com.ibm.watson.language_translator.v3.util.Language;
+import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
+import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslateOptions;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 public class Translator
 {
@@ -24,7 +22,7 @@ public class Translator
 		  .target(target)
 		  .build();
 		
-		String translationResult = service.translate(translateOptions).execute().getResult().getTranslations().get(0).getTranslationOutput();
+		String translationResult = service.translate(translateOptions).execute().getTranslations().get(0).getTranslationOutput();
 
 		return translationResult;
 	}
