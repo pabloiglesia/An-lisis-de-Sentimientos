@@ -21,7 +21,51 @@
 
     <!-- Main content -->
     <section class="content container-fluid">
-    
+    	<div class="row">	
+		        <div class="col-lg-3 col-md-6 col-xs-12">
+		          <!-- small box -->
+		          <div class="small-box bg-aqua">
+		            <div class="inner text-center">
+		              <h3><%= analysis.getPersonalities().get(0).getName() %></h3>
+		              <h4><%=analysis.getPersonalities().get(0).getRawScore().floatValue() %></h4>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-md-6 col-xs-12">
+		          <!-- small box -->
+		          <div class="small-box bg-green">
+		            <div class="inner text-center">
+		              <h3 style="font-size:33px;height:42px"><%=analysis.getPersonalities().get(1).getName() %></h3>
+		              <h4><%=analysis.getPersonalities().get(1).getRawScore().floatValue() %><sup style="font-size: 20px"></sup></h4>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-md-6 col-xs-12">
+		          <!-- small box -->
+		          <div class="small-box bg-yellow">
+		            <div class="inner text-center">
+		              <h3><%=analysis.getPersonalities().get(2).getName() %></h3>
+		              <h4><%=analysis.getPersonalities().get(2).getRawScore().floatValue() %></h4>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		        <!-- ./col -->
+		        <div class="col-lg-3 col-md-6 col-xs-12">
+		          <!-- small box -->
+		          <div class="small-box bg-red">
+		            <div class="inner text-center">
+		              <h3><%=analysis.getPersonalities().get(3).getName() %></h3>
+		              <h4><%=analysis.getPersonalities().get(3).getRawScore().floatValue() %></h4>
+		            </div>
+		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+		          </div>
+		        </div>
+		      </div>
     	<!-- Carta de motivación -->
     	<div class="box box-widget">
             <div class="box-header with-border row">
@@ -94,7 +138,7 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
-			              <h4>Asco:</h4>			             
+			              <h4>Disgusto:</h4>			             
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getGeneralResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
@@ -127,6 +171,10 @@
 			        
 			        <!-- Hacia la empresa -->			        
 	             	<div class="col-md-6">
+	             		<% 
+	             		boolean companyResults = true;
+	             		if(analysis.getTargetResults().get(0).getTargetName().equals(analysis.getCompany())){ 
+	             		%>
 			          <div class="box box-primary box-solid">
 			            <div class="box-header with-border">
 			              <h3 class="box-title">Emociones hacia la empresa:</h3>
@@ -167,6 +215,15 @@
 			            <!-- /.box-body -->
 			          </div>
 			          <!-- /.box -->
+			          	<% } else { 
+			          		companyResults = false;
+			          	%>
+			          		<div class="alert alert-warning alert-dismissible">
+				                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				                <h4><i class="icon fa fa-warning"></i> Lo sentimos!</h4>
+				                En la carta no se habla lo suficiente de la empresa como para realizar un análisis de sentimientos.
+				              </div>
+			          	<% } %>
 			        </div>
 				</div>
 				<!-- End Hacia la empresa -->
@@ -186,7 +243,29 @@
             <!-- /.box-header -->
              <div class="box-body">
              	<div class="row">
-             	<% for (int i=1; i<analysis.getTargetResults().size(); i++) { %>
+             	<% boolean noKeywordResults = false;
+         		int j=1; 
+             	if(companyResults){
+             		if(analysis.getTargetResults().size()<=j) {
+             			noKeywordResults = true;
+             		}
+             	} else {
+             		j=0; 
+             		if(analysis.getTargetResults().size()<=j) {
+             			noKeywordResults = true;
+             		}
+             	}
+             	%>
+             		
+             		<% if(noKeywordResults){ %>
+        				<div class="alert alert-warning alert-dismissible" style="margin:15px">
+		                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		                <h4><i class="icon fa fa-warning"></i> Lo sentimos!</h4>
+		                No hemos obtenido ningún resultado reseñable en el análisis de sentimientos de las palabras clave indicadas. Es probable que el candidato no hable de temas relacionados con estas palabras en su carta.
+		              </div>
+             		
+             	<% } %>
+             	<% for(int i=j; i<analysis.getTargetResults().size(); i++) { %>
              	<!-- PALABRA CLAVE -->
 	             <div class="col-md-6">
 			          <div class="box box-success box-solid">
@@ -201,7 +280,7 @@
 			                  <span class="sr-only">40% Complete (success)</span>
 			                </div>
 			              </div>
-			              <h4>Asco:</h4>			             
+			              <h4>Disgusto:</h4>			             
 			              <div class="progress">
 			                <div class="progress-bar progress-bar-green" role="progressbar" style="width: <%= 100*analysis.getTargetResults().get(i).getTargetResults().getDisgust() %>%">
 			                  <span class="sr-only">20% Complete</span>
@@ -237,86 +316,44 @@
          </div>
         <!-- End Análisis de palabras clave -->
         
-    	<!-- Analisis de personalidad -->
-	    <div class="box box-primary collapsed-box">
-	        <div class="box-header with-border">
-              <h3 class="box-title">Análisis de personalidad</h3>
-              	<div class="box-tools pull-right">
-				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-				  </button>
-				</div>
-			</div>
-			<div class="box-body">
-			 <div class="row">	
-		        <div class="col-lg-3 col-xs-6">
-		          <!-- small box -->
-		          <div class="small-box bg-aqua">
-		            <div class="inner">
-		              <h3><%=analysis.getPersonalities().get(0).getRawScore() %></h3>
-		              <p>Openess</p>
-		            </div>
-		            <div class="icon">
-		              <i class="ion ion-bag"></i>
-		            </div>
-		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-		          </div>
-		        </div>
-		        <!-- ./col -->
-		        <div class="col-lg-3 col-xs-6">
-		          <!-- small box -->
-		          <div class="small-box bg-green">
-		            <div class="inner">
-		              <h3>53<sup style="font-size: 20px">%</sup></h3>
-		              <p>Conscientiousness</p>
-		            </div>
-		            <div class="icon">
-		              <i class="ion ion-stats-bars"></i>
-		            </div>
-		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-		          </div>
-		        </div>
-		        <!-- ./col -->
-		        <div class="col-lg-3 col-xs-6">
-		          <!-- small box -->
-		          <div class="small-box bg-yellow">
-		            <div class="inner">
-		              <h3>44</h3>
-		              <p>Extraversion</p>
-		            </div>
-		            <div class="icon">
-		              <i class="ion ion-person-add"></i>
-		            </div>
-		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-		          </div>
-		        </div>
-		        <!-- ./col -->
-		        <div class="col-lg-3 col-xs-6">
-		          <!-- small box -->
-		          <div class="small-box bg-red">
-		            <div class="inner">
-		              <h3>65</h3>
-		              <p>Agreeableness</p>
-		            </div>
-		            <div class="icon">
-		              <i class="ion ion-pie-graph"></i>
-		            </div>
-		            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-		          </div>
-		        </div>
-		      </div>
-		     </div>
-	     </div>
-	    <!-- End Análisis de palabras clave -->
 	    <!-- Analisis de tono -->
-	    <div class="box box-primary collapsed-box">
-	        <div class="box-header with-border">
-              <h3 class="box-title">Tono de la carta</h3>
-              	<div class="box-tools pull-right">
-				  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-				  </button>
-				</div>
-			</div>
-		</div>	
+		<div class="box box-info">
+		  <div class="box box-primary collapsed-box">
+		    <h3 class="box-title">Latest Orders</h3>
+		
+		    <div class="box-tools pull-right">
+		      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+		      </button>
+		    </div>
+		  </div>
+		  <!-- /.box-header -->
+		  <div class="box-body" style="">
+		    <div class="table-responsive">
+		      <table class="table no-margin">
+		        <thead>
+		        <tr>
+		          <th>ID</th>
+		          <th>Frase</th>
+		          <th>Tonos</th>
+		          <th>Puntuación</th>
+		        </tr>
+		        </thead>
+		        <tbody>
+		        <% for (int i=1; i<analysis.getSentenceAnalysis().size(); i++) { %>  
+		        <tr>
+		          <td><%=i%></td>
+		          <td><a><%=analysis.getSentenceAnalysis().get(i).getText() %></a></td>
+<%--   			  <td><%=analysis.getSentenceAnalysis().get(i).getTones().toArray()%></td> -->
+<%-- 		       <td><span class="label label-success"><%=analysis.getSentenceAnalysis().get(i).getTones().get(i) %></span></td> --%>
+		        </tr>
+		        <% } %>
+		        </tbody>
+		      </table>
+		    </div>
+		    <!-- /.table-responsive -->
+		  </div>
+		  <!-- /.box-body -->
+		</div>
 		<!-- End Analisis de tono -->	 
   <!-- /.content -->
    </section>

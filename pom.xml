@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <repositories>
-    <repository>
+    <!--  <repositories>
+  <repository>
       <id>ibm</id>
       <name>ibm-repo</name>
       <url>https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo</url>
     </repository>
-  </repositories>
+  </repositories> -->
   <parent>
     <groupId>net.wasdev.maven.parent</groupId>
     <artifactId>java7-parent</artifactId>
@@ -44,10 +44,16 @@
   <dependencies>
   
   	<dependency>
+	  <groupId>com.ibm.watson.developer_cloud</groupId>
+	  <artifactId>java-sdk</artifactId>
+	  <version>6.11.0</version>
+	</dependency>
+  
+  	<!--  <dependency>
 	 <groupId>com.ibm.watson</groupId>
 	 <artifactId>ibm-watson</artifactId>
 	 <version>7.0.0</version>
-	</dependency>
+	</dependency> -->
 
     <dependency>
       <groupId>com.cloudant</groupId>
