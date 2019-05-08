@@ -33,7 +33,7 @@
         <li class="header">ACCIONES</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="/asrProyectoFinal/"><i class="fa fa-plus"></i> <span>Nueva carta de motivación</span></a></li>
-        <li><a href="/asrProyectoFinal/list/"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
+        <li><a href="/asrProyectoFinal/list"><i class="fa fa-list"></i> <span>Histórico</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span>
             <span class="pull-right-container">

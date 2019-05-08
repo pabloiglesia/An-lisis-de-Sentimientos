@@ -74,7 +74,7 @@
               <div class="user-block col-md-9">
                 <span class="username">Texto de la carta</span>
               </div>
-                <form method="POST" action="/asrProyectoFinal/translate/"> 
+                <form method="POST" action="/asrProyectoFinal/translate"> 
                 	<input type="hidden" value="<%= analysis.get_id() %>" name="id">    
 					<div class="col-md-2">
 						<select name="language" class="btn-block form-control">
