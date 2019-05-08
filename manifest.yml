@@ -1,7 +1,7 @@
 ---
 applications:
 - name: asrProyectoFinal
-  random-route: true
+  random-route: false
   path: target/asrProyectoFinal.war
   memory: 256M
   instances: 1
