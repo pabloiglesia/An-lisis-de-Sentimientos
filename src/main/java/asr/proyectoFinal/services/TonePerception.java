@@ -1,12 +1,9 @@
 package asr.proyectoFinal.services;
 
-
-
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.tone_analyzer.v3.ToneAnalyzer;
-import com.ibm.watson.tone_analyzer.v3.model.ToneAnalysis;
-import com.ibm.watson.tone_analyzer.v3.model.ToneOptions;
-
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneAnalysis;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneOptions;
 
 public class TonePerception {
 	
@@ -21,7 +18,7 @@ public class TonePerception {
 				  .sentences(true)
 				  .build();
 				
-		ToneAnalysis response = toneAnalyzer.tone(toneOptions).execute().getResult();
+		ToneAnalysis response = toneAnalyzer.tone(toneOptions).execute();
 		this.setToneAnalysis(response);
 		//this.setText(text);
 	}

@@ -1,6 +1,6 @@
 package asr.proyectoFinal.dominio;
 
-import com.ibm.watson.natural_language_understanding.v1.model.EmotionScores;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.EmotionScores;
 
 /**
  * Represents a Visitor document stored in Cloudant.

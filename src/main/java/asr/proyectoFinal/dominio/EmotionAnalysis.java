@@ -3,11 +3,10 @@ package asr.proyectoFinal.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
-import com.ibm.watson.personality_insights.v3.model.Trait;
-import com.ibm.watson.tone_analyzer.v3.model.DocumentAnalysis;
-import com.ibm.watson.tone_analyzer.v3.model.SentenceAnalysis;
-
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.CategoriesResult;
+import com.ibm.watson.developer_cloud.personality_insights.v3.model.Trait;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.DocumentAnalysis;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.SentenceAnalysis;
 
 import asr.proyectoFinal.services.LanguageUnderstanding;
 import asr.proyectoFinal.services.PersonalityInsight;

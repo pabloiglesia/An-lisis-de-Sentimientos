@@ -1,8 +1,10 @@
 <%@page import="asr.proyectoFinal.dominio.EmotionAnalysis"%>
+<%@page import="com.ibm.watson.developer_cloud.personality_insights.v3.model.Trait" %>
 <%@page import="java.util.Iterator"%>
 <%@include file="includes/head.jsp" %>    
 <%@include file="includes/header.jsp" %>
 <%@include file="includes/sidebar.jsp" %>
+
 <!-- Content Wrapper. Contains page content -->
 
 	<% EmotionAnalysis analysis = (EmotionAnalysis) session.getAttribute("analysis"); %>

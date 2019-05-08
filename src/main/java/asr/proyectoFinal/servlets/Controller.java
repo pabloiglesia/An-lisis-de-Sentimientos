@@ -20,14 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.natural_language_understanding.v1.model.CategoriesResult;
-import com.ibm.watson.natural_language_understanding.v1.model.EmotionResult;
-import com.ibm.watson.natural_language_understanding.v1.model.TargetedEmotionResults;
-import com.ibm.watson.personality_insights.v3.PersonalityInsights;
-import com.ibm.watson.personality_insights.v3.model.Profile;
-import com.ibm.watson.personality_insights.v3.model.ProfileOptions;
-
 import asr.proyectoFinal.dao.CloudantEmotionAnalysisStore;
 import asr.proyectoFinal.dominio.EmotionAnalysis;
 import asr.proyectoFinal.dominio.Palabra;
