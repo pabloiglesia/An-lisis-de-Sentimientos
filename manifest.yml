@@ -1,9 +1,9 @@
 ---
 applications:
 - name: asrProyectoFinal
-  random-route: true
+  random-route: false
   path: target/asrProyectoFinal.war
-  memory: 256M
+  memory: 1024M
   instances: 1
   host: asrProyectoFinal
   domain: eu-gb.mybluemix.net
