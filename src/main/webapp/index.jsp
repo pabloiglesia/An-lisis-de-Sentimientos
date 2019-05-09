@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/insert">
+            <form role="form" method="POST" action="asrProyectoFinal/insert">
               <div class="box-body">
               	<div class="form-group">
                   <label>Nombre de tu empresa:</label>
