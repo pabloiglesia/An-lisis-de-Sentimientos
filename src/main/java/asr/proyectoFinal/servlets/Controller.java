@@ -22,7 +22,7 @@ import asr.proyectoFinal.services.Translator;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/list", "/insert", "/translate"})
+@WebServlet(urlPatterns = {"asrProyectoFinal/list", "asrProyectoFinal/insert", "asrProyectoFinal/translate"})
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -84,7 +84,7 @@ public class Controller extends HttpServlet {
 				
 				analysis = store.persist(new EmotionAnalysis(lu,pi,tp));
 				
-				response.sendRedirect("/list?id="+analysis.get_id());
+				response.sendRedirect("asrProyectoFinal/list?id="+analysis.get_id());
 				break;
 		
 			case "asrProyectoFinal/translate":
@@ -96,7 +96,7 @@ public class Controller extends HttpServlet {
 								
 				store.update(id, analysis);
 				
-				response.sendRedirect("/list?id="+analysis.get_id());
+				response.sendRedirect("asrProyectoFinal/list?id="+analysis.get_id());
 				break;
 		}	
 
