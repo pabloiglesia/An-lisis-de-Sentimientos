@@ -23,6 +23,7 @@ import asr.proyectoFinal.services.Translator;
  * Servlet implementation class Controller
  */
 @WebServlet(urlPatterns = {"/list", "/insert", "/translate"})
+
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +34,7 @@ public class Controller extends HttpServlet {
 		
 		switch(request.getServletPath())
 		{
-			case "/list":
+			case "asrProyectoFinal/list":
 				String id = request.getParameter("id");
 				if(id == null) {
 					request.getSession().setAttribute("record", store.getAll().iterator());
@@ -64,7 +65,7 @@ public class Controller extends HttpServlet {
 		EmotionAnalysis analysis;
 		switch(request.getServletPath())
 		{
-			case "/insert":
+			case "asrProyectoFinal/insert":
 				text = request.getParameter("text");
 				String company = request.getParameter("companyName");
 				language = request.getParameter("language");
@@ -86,7 +87,7 @@ public class Controller extends HttpServlet {
 				response.sendRedirect("/list?id="+analysis.get_id());
 				break;
 		
-			case "/translate":
+			case "asrProyectoFinal/translate":
 				
 				String id = request.getParameter("id");
 				language = request.getParameter("language");
