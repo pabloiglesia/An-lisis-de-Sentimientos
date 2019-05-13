@@ -8,6 +8,7 @@ public class Translator
 {
 	public static String translate(String texto, String source, String target)
 	{
+		String translationResult;
 		if(!source.equals(target)) {
 			IamOptions iamOptions = new IamOptions.Builder()
 					  .apiKey("y_SdizANmBhTex3ex5LKGIiCq1uNFv3J_9OaLpJLRQBR")
@@ -23,9 +24,9 @@ public class Translator
 			  .target(target)
 			  .build();
 			
-			String translationResult = service.translate(translateOptions).execute().getTranslations().get(0).getTranslationOutput();
+			translationResult = service.translate(translateOptions).execute().getTranslations().get(0).getTranslationOutput();
 		} else {
-			String translationResult = texto;
+			translationResult = texto;
 		}
 
 		return translationResult;

@@ -72,8 +72,8 @@ public class Controller extends HttpServlet {
 				String[] keywords = request.getParameter("keywords").split(",");
 
 				ArrayList<String> targets = new ArrayList<String>();
+				targets.add(company);
 				try {
-					targets.add(company);
 					for (int i=0; i<keywords.length; i++)
 						targets.add(Translator.translate(keywords[i], language, "en"));
 				} catch(Exception e) {
@@ -85,7 +85,13 @@ public class Controller extends HttpServlet {
 				PersonalityInsight pi = new PersonalityInsight(text);
 				TonePerception tp= new TonePerception(text);
 				
-				analysis = store.persist(new EmotionAnalysis(lu,pi,tp));
+				try {				
+					analysis = store.persist(new EmotionAnalysis(lu,pi,tp));
+				} catch (Exception e) {
+					text = "Company: "+company+" \n\n"+ text;
+					lu = new LanguageUnderstanding(text, targets, candidate);
+					analysis = store.persist(new EmotionAnalysis(lu,pi,tp));					
+				}
 				
 				response.sendRedirect("list?id="+analysis.get_id());
 				break;
