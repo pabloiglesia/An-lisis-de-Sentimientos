@@ -72,9 +72,13 @@ public class Controller extends HttpServlet {
 				String[] keywords = request.getParameter("keywords").split(",");
 
 				ArrayList<String> targets = new ArrayList<String>();
-				targets.add(company);
-				for (int i=0; i<keywords.length; i++)
-					targets.add(Translator.translate(keywords[i], language, "en"));
+				try {
+					targets.add(company);
+					for (int i=0; i<keywords.length; i++)
+						targets.add(Translator.translate(keywords[i], language, "en"));
+				} catch(Exception e) {
+					System.out.println("Error al almacenar los targets");
+				}
 				
 				text = Translator.translate(text, language, "en");
 				LanguageUnderstanding lu = new LanguageUnderstanding(text, targets, candidate);
