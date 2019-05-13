@@ -7,9 +7,9 @@
     </servlet>
     <servlet-mapping>
       <servlet-name>Controller</servlet-name>
-      <url-pattern>list</url-pattern>
-      <url-pattern>insert</url-pattern>
-      <url-pattern>translate</url-pattern>
+      <url-pattern>/list</url-pattern>
+      <url-pattern>/insert</url-pattern>
+      <url-pattern>/translate</url-pattern>
     </servlet-mapping>
     <session-config>
       <session-timeout>30</session-timeout>
