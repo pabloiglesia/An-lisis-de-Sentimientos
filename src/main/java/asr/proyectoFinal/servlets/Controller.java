@@ -83,7 +83,7 @@ public class Controller extends HttpServlet {
 				
 				analysis = store.persist(new EmotionAnalysis(lu,pi,tp));
 				
-				response.sendRedirect("asrProyectoFinal/list?id="+analysis.get_id());
+				response.sendRedirect("list?id="+analysis.get_id());
 				break;
 		
 			case "/translate":
@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
 								
 				store.update(id, analysis);
 				
-				response.sendRedirect("asrProyectoFinal/list?id="+analysis.get_id());
+				response.sendRedirect("list?id="+analysis.get_id());
 				break;
 		}	
 
